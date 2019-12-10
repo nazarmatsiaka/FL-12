@@ -30,7 +30,7 @@ section:before {
 }
 .tm-banner .tm-banner-text {
     text-shadow: 5px 5px 3px #333;
-    animation: move_text 4s ease-out;
+    animation: move_text 3s ease-out;
 }
 @keyframes move_text { from { transform: translateX(200px);} to { transform: translateX(0px);}}
 
@@ -127,11 +127,6 @@ section:before {
 }
 
 @media print {
-    * {
-        margin: 0 auto;
-        max-width: none;
-        padding: 0;
-    }
     section:before {
         display: none;
     }
@@ -151,8 +146,18 @@ section:before {
         list-style-type: none;
         text-align: right;
     }
-    .blocks .tm-team-description-container h2 {
+    .blocks .tm-team-description-container h2, p {
         text-align: center;
+    }
+    .tm-team-description-container {
+        max-width: none;
+        margin: 0;
+    }
+    .padding-medium, .tm-main-content, .tm-footer, .carousel, .tm-banner {
+        padding: 0;
+    }
+    section .tm-content-box {
+        margin-bottom: 0;
     }
 
 }
