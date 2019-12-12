@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #fff; }
+
+body {
+  background-color: #fff; }
+
+header {
+  background: center url(../img/m-h-day.jpg) no-repeat;
+  background-size: cover;
+  padding: 15px 10% 105px;
+  border-radius: 0 0 40% 0; }
+  header .header-wrap {
+    width: 500px; }
+    header .header-wrap:before {
+      content: '';
+      display: block;
+      background-color: #14A0C7;
+      position: absolute;
+      top: 165px;
+      height: 32px;
+      width: 210px; }
+  header .landing-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px; }
+    header .landing-logo img {
+      width: 30px; }
+    header .landing-logo p {
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 13px;
+      font-family: 'Fresca', sans-serif;
+      color: #000; }
+      header .landing-logo p span {
+        color: #000;
+        display: block;
+        font-size: 8px;
+        text-align: center; }
+  header .header_heading {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    position: relative;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #000; }
+  header .header_text {
+    font-size: 12px;
+    white-space: pre-line;
+    line-height: 20px;
+    color: #000;
+    margin-bottom: 25px; }
+  header button {
+    background-color: #699900;
+    padding: 10px 30px;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer; }
+  header a {
+    margin-left: 100px;
+    font-family: 'Source Sans Pro', sans-serif; }
+
+main {
+  position: relative; }
+  main:before {
+    content: '';
+    display: block;
+    background-color: #14A0C7;
+    position: absolute;
+    width: 125px;
+    height: 30px;
+    left: 680px;
+    top: 20px; }
+  main .section_text {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    padding: 20px 0px;
+    position: relative; }
+  main .section_card {
+    background-color: #21232E;
+    padding: 10px;
+    border-radius: 5px;
+    width: 55%;
+    margin: 0 auto 15px;
+    display: flex; }
+    main .section_card img {
+      border-radius: 5px;
+      height: 300px; }
+    main .section_card .section_card_right_container {
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      main .section_card .section_card_right_container p:first-child {
+        text-align: center;
+        font-family: 'Hind', sans-serif;
+        font-weight: bold;
+        font-size: 22px; }
+      main .section_card .section_card_right_container p:nth-child(2) {
+        text-align: justify;
+        font-family: 'Fresca', sans-serif; }
+      main .section_card .section_card_right_container a {
+        text-align: center; }
