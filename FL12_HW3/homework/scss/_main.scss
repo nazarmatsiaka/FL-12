@@ -103,7 +103,8 @@ main {
         @include marcer;
         width: 125px;
         height: 30px;
-        left: 680px;
+        left: 50%;
+        transform: translateX(5px);
         top: 20px;
     }
 
