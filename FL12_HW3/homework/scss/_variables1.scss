@@ -1,6 +1,11 @@
-$bg_color: #fff;
+$bg_colors: (
+    all: #fff,
+    card_footer: #21232E
+);
+
+
 $header_image: url(../img/m-h-day.jpg);
 $text_color: #000;
 $btn_color: #699900;
 $marcer_word: #14A0C7;
-$card_color: #21232E;
+$banner_bg: linear-gradient(90deg, #65940E, #305ECF);
