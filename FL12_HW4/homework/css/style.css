@@ -6,6 +6,12 @@ p, a {
     color: #777;
 }
 
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 header .sidebar_wrap {
     height: 75px;
 }
@@ -40,14 +46,15 @@ header .navbar ul a:hover{
 }
 
 header .header-content {
-    background: center url(../img/home-bg.jpg) no-repeat;
+    flex-grow: 1;
+    background: center top url(../img/home-bg.jpg) no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 header .header-content h1 {
-    margin-top: 380px;
+    margin-top: 240px;
     color: #fff;
     font-size: 85px;
 }
@@ -68,7 +75,7 @@ header .header-content button {
     font-weight: 600;
     text-transform: uppercase;
     padding: 15px 30px;
-    margin: 50px 0 300px;
+    margin-top: 50px;
     cursor: pointer;
 }
 
