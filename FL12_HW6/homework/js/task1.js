@@ -8,11 +8,11 @@ if(Number.isInteger(a) && Number.isInteger(b) && Number.isInteger(c) && a !=='' 
         console.log('no solution');
     } else if(discriminant === 0) {
         let x = -b / (2 * a);
-        console.log('x = ' + x);
+        console.log('x = ' + Math.round(x));
     } else {
         let x1 = (-b + Math.sqrt(discriminant))/ (2 * a);
         let x2 = (-b - Math.sqrt(discriminant))/ (2 * a);
-        console.log('x1 = ' + x1 + ' and x2 = ' + x2);
+        console.log('x1 = ' + Math.round(x1) + ' and x2 = ' + Math.round(x2));
     }
 } else {
     console.log('Invalid input data');
