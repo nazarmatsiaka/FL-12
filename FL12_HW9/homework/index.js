@@ -28,7 +28,9 @@ function filterArray(arr, fn) {
     let filterArr = [];
 
     executeforEach(arr, (num) => {
-        filterArr.push(fn(Number(num)));
+        if(fn(Number(num))) {
+            filterArr.push(Number(num));
+        }
     });
     
     return filterArr;
