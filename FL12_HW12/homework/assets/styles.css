@@ -1,0 +1,87 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    transition: all, linear .3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.header .header_btn {
+    border: 2px solid #00BFFF;
+    color: #00BFFF;
+}
+.header .header_btn:hover {
+    background-color: #00BFFF;
+    color: #fff;
+}
+
+.list {
+    padding: 10px 50px;
+}
+.list .list_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #00BFFF;
+    border-radius: 6px;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.list .ready {
+    background-color: rgba(0, 191, 255, .7);
+}
+.list .edit_btn {
+    border: 2px solid #228B22;
+    margin-right: 10px;
+    color: #228B22;
+}
+.list .edit_btn:hover {
+    background-color: #228B22;
+    color: #fff;
+}
+.list .remove_btn {
+    border: 2px solid #DC143C;
+    color: #DC143C;
+}
+.list .remove_btn:hover {
+     background-color: #DC143C;
+     color: #fff;
+ }
+
+.editPage input {
+    margin-right: 15px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #00BFFF;
+    padding: 4px 10px;
+}
+.editPage input:focus {
+    padding-bottom: 3px;
+    border-bottom-width: 3px;
+}
+
+.editPage .save_btn {
+    border: 2px solid #228B22;
+    color: #228B22;
+    margin-right: 5px;
+}
+.editPage .save_btn:hover {
+    background-color: #228B22;
+    color: #fff;
+}
+.editPage .cancel_btn {
+    border: 2px solid #DC143C;
+    color: #DC143C;
+}
+.editPage .cancel_btn:hover {
+    background-color: #DC143C;
+    color: #fff;
+}
