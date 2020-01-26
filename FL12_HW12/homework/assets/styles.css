@@ -24,6 +24,7 @@
 
 .list {
     padding: 10px 50px;
+    list-style-type: none;
 }
 .list .list_item {
     display: flex;
