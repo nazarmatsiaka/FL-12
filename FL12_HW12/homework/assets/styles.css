@@ -22,11 +22,12 @@
     color: #fff;
 }
 
-.list {
+.set_block {
     padding: 10px 50px;
     list-style-type: none;
 }
-.list .list_item {
+
+.set_block .list_item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,53 +37,58 @@
     margin-bottom: 15px;
     cursor: pointer;
 }
-.list .ready {
+.set_block .studied {
     background-color: rgba(0, 191, 255, .7);
 }
-.list .edit_btn {
+.set_block .edit_btn {
     border: 2px solid #228B22;
     margin-right: 10px;
     color: #228B22;
 }
-.list .edit_btn:hover {
+.set_block .edit_btn:hover {
     background-color: #228B22;
     color: #fff;
 }
-.list .remove_btn {
+.remove_btn {
     border: 2px solid #DC143C;
     color: #DC143C;
 }
-.list .remove_btn:hover {
-     background-color: #DC143C;
-     color: #fff;
- }
+.remove_btn:hover {
+    background-color: #DC143C;
+    color: #fff;
+}
 
-.editPage input {
+
+.edit_page > * {
+    margin-right: 10px;
+}
+
+.edit_page input {
     margin-right: 15px;
     border: none;
     outline: none;
     border-bottom: 2px solid #00BFFF;
     padding: 4px 10px;
 }
-.editPage input:focus {
+.edit_page input:focus {
     padding-bottom: 3px;
     border-bottom-width: 3px;
 }
 
-.editPage .save_btn {
+.edit_page .save_btn {
     border: 2px solid #228B22;
     color: #228B22;
     margin-right: 5px;
 }
-.editPage .save_btn:hover {
+.edit_page .save_btn:hover {
     background-color: #228B22;
     color: #fff;
 }
-.editPage .cancel_btn {
+.edit_page .cancel_btn {
     border: 2px solid #DC143C;
     color: #DC143C;
 }
-.editPage .cancel_btn:hover {
+.edit_page .cancel_btn:hover {
     background-color: #DC143C;
     color: #fff;
 }

@@ -1,26 +1,23 @@
 let rootNode = document.getElementById('root');
 let setList = [];
-let readySetList = [];
 
 if(localStorage.getItem('list')) {
     setList = JSON.parse(localStorage.getItem('list'));
-}
-if(localStorage.getItem('readyList')) {
-    readySetList = JSON.parse(localStorage.getItem('readyList'));
 }
 
 let page = getHashData('page');
 
 if(!page) {
     createMainPage();
-} else if (page === 'addSet'||page === 'modify') {
+} else if(page === 'addSet'||page === 'modify') {
     createEditPage();
 }
 
+// create main page;
 function createMainPage() {
     let main = document.createElement('div');
     main.appendChild(mainHeader());
-    main.appendChild(createSetList());
+    main.appendChild(createSetBlock());
 
     rootNode.appendChild(main);
 }
@@ -40,27 +37,20 @@ function mainHeader() {
     return header;
 }
 
-function createSetList() {
-    let list = document.createElement('ul');
-    list.classList.add('list');
+function createSetBlock() {
+    let setBlock = document.createElement('div');
+    setBlock.classList.add('setBlock');
+    setBlock.classList.add('set_block');
 
-    const createItem = (set, status = null) => {
-        let listItem = document.createElement('li');
-        listItem.classList.add('list_item');
-
-        let text = document.createElement('p');
-        text.innerText = set.term + ' - ' + set.description;
-        listItem.appendChild(text);
-
+    const createBtnBlock = (setId) => {
         let btnBox = document.createElement('div');
-        listItem.appendChild(btnBox);
 
         let editBtn = document.createElement('button');
         editBtn.innerText = 'Edit';
         editBtn.classList.add('edit_btn', 'btn');
         editBtn.addEventListener('click', (event) => {
             event.stopPropagation();
-            location.hash = '/modify/:' + set.id;
+            location.hash = '/modify/:' + setId;
         });
         btnBox.appendChild(editBtn);
 
@@ -69,83 +59,139 @@ function createSetList() {
         removeBtn.classList.add('remove_btn', 'btn');
         removeBtn.addEventListener('click', (event) => {
             event.stopPropagation();
-            setList = setList.filter(item => item.id !== set.id);
-            readySetList = readySetList.filter(item => item.id !== set.id);
+            setList = setList.filter(item => item.id !== setId);
             saveToStorage();
             goToPage('main');
         });
         btnBox.appendChild(removeBtn);
 
-        if(status) {
-            listItem.classList.add(status);
+        return btnBox;
+    };
+
+    const createItem = (set) => {
+        const block = document.createElement('div');
+        block.classList.add('list_item');
+        if(set.studied) {
+            block.classList.add('studied');
         } else {
-            listItem.addEventListener('click', () => {
-                readySetList.push(set);
-                setList = setList.filter(item => item.id !== set.id);
+            block.addEventListener('click', () => {
+                set.studied = true;
+                setList = setList.map(task =>
+                    task.id === set.id? set: task);
                 saveToStorage();
                 goToPage('main');
             });
         }
 
-        return listItem;
+        const list = document.createElement('dl');
+
+        const setName = document.createElement('dt');
+        setName.innerText = set.name + ':';
+        list.appendChild(setName);
+
+        set.terms.forEach(item => {
+            const term = document.createElement('dd');
+            term.innerText = item.term + ' - ' + item.definition;
+
+            list.appendChild(term);
+        });
+
+        block.appendChild(list);
+        block.appendChild(createBtnBlock(set.id));
+
+        return block;
     };
 
     setList.forEach(set => {
-       list.appendChild(createItem(set));
+        if(!set.studied) {
+            setBlock.appendChild(createItem(set));
+        }
     });
-    readySetList.forEach(set => {
-        list.appendChild(createItem(set, 'ready'));
+    setList.forEach(set => {
+        if(set.studied) {
+            setBlock.appendChild(createItem(set));
+        }
     });
-
-    return list;
+    return setBlock;
 }
 
+// create edit page
 function createEditPage() {
     let page = getHashData('page');
     let setId = getHashData('setId');
 
+    let setItem = {id: getNewId(setList), name: '', studied: false, terms: []};
+    if(setId) {
+        setItem = setList[setList.map(item => item.id).indexOf(setId)];
+    }
+
     let editPage = document.createElement('div');
-    editPage.classList.add('editPage');
+    editPage.classList.add('edit_page');
 
-    let term;
-    let termInput = document.createElement('input');
-    termInput.placeholder = 'Enter Term';
-    if(page === 'modify') {
-        term = getValue(setId, 'term');
-        termInput.value = term;
-    }
-    termInput.addEventListener('input', (event) => {
-        term = event.target.value;
-
+    let setName = document.createElement('input');
+    setName.placeholder = 'Enter name';
+    setName.value = setItem.name;
+    setName.addEventListener('input', (event) => {
+        setItem.name = event.target.value;
     });
-    editPage.appendChild(termInput);
+    editPage.appendChild(setName);
 
-    let description;
-    let descriptionInput = document.createElement('input');
-    descriptionInput.placeholder = 'Enter description';
-    if(page === 'modify') {
-        description = getValue(setId, 'description');
-        descriptionInput.value = description;
+
+    const createTermBlock = item => {
+        let termBlock = document.createElement('div');
+
+        let termInput = document.createElement('input');
+        termInput.placeholder = 'Enter term';
+        termInput.value = item.term;
+        termInput.addEventListener('input', (event) => {
+            setItem.terms = setItem.terms.map(term =>
+                term.id === item.id? {id: term.id, term: event.target.value, definition: term.definition}: term);
+        });
+        termBlock.appendChild(termInput);
+
+        let definitionInput = document.createElement('input');
+        definitionInput.placeholder = 'Enter definition';
+        definitionInput.value = item.definition;
+        definitionInput.addEventListener('input', (event) => {
+            setItem.terms = setItem.terms.map(term =>
+                term.id === item.id? {id: term.id, term: term.term, definition: event.target.value}: term);
+        });
+        termBlock.appendChild(definitionInput);
+
+
+        let removeBtn = document.createElement('button');
+        removeBtn.innerText = 'remove';
+        removeBtn.classList.add('btn', 'remove_btn');
+        removeBtn.addEventListener('click', function() {
+            setItem.terms = setItem.terms.filter(term => term.id !== item.id);
+            editPage.removeChild(this.parentNode);
+        });
+        termBlock.appendChild(removeBtn);
+
+        editPage.appendChild(termBlock);
     }
-    descriptionInput.addEventListener('input', (event) => {
-        description = event.target.value;
+
+    let addTermBtn = document.createElement('button');
+    addTermBtn.classList.add('btn');
+    addTermBtn.innerText = 'Add term';
+    addTermBtn.addEventListener('click', () => {
+        let termObj = {id: getNewId(setItem.terms), term: '', definition: ''};
+        setItem.terms.push(termObj);
+        createTermBlock(termObj);
     });
-    editPage.appendChild(descriptionInput);
+    editPage.appendChild(addTermBtn);
 
     let saveBtn = document.createElement('button');
-    saveBtn.innerText = 'Save Changes';
-    saveBtn.classList.add('save_btn', 'btn');
+    saveBtn.classList.add('btn', 'save_btn');
+    saveBtn.innerText = 'Save changes';
     saveBtn.addEventListener('click', () => {
-        if(term && description) {
+        if(setItem.name) {
             if(page === 'addSet') {
-                setList.push({id: getNewId(), term: term, description: description});
+                setList.push(setItem);
             } else if(page === 'modify') {
-                setList = setList.map(item =>
-                    item.id === setId? {id: item.id, term: term, description: description}: item);
-                readySetList = readySetList.map(item =>
-                    item.id === setId? {id: item.id, term: term, description: description}: item);
+                setList = setList.map(task =>
+                    task.id === setId? setItem: task);
             }
-
             saveToStorage();
             location.hash = '';
         }
@@ -153,15 +199,18 @@ function createEditPage() {
     editPage.appendChild(saveBtn);
 
     let cancelBtn = document.createElement('button');
+    cancelBtn.classList.add('btn', 'cancel_btn');
     cancelBtn.innerText = 'Cancel';
-    cancelBtn.classList.add('cancel_btn', 'btn');
     cancelBtn.addEventListener('click', () => {
         location.hash = '';
     });
     editPage.appendChild(cancelBtn);
 
+    setItem.terms.forEach(item => createTermBlock(item));
+
     rootNode.appendChild(editPage);
 }
+
 
 function getHashData(name) {
     let hash = location.hash.split('/');
@@ -174,36 +223,20 @@ function getHashData(name) {
         return hash[setIdNum]? Number(hash[setIdNum].slice(1)): null;
     }
 }
-function getValue(id, name) {
-    let result;
 
-    setList.forEach(item => {
-        if(item.id === id) {
-            result = item[name];
-        }
-    });
-
-    readySetList.forEach(item => {
-        if(item.id === id) {
-            result = item[name];
-        }
-    });
-
-    return result;
+function saveToStorage() {
+    localStorage.setItem('list', JSON.stringify(setList));
 }
-function getNewId() {
+
+function getNewId(list) {
     let id = 0;
 
-    id = setList.reduce((max, item) => item.id > max? item.id: max, id);
-    id = readySetList.reduce((max, item) => item.id > max? item.id: max, id);
+    id = list.reduce((max, item) => item.id > max? item.id: max, id);
 
     return id + 1;
 
 }
-function saveToStorage() {
-    localStorage.setItem('list', JSON.stringify(setList));
-    localStorage.setItem('readyList', JSON.stringify(readySetList));
-}
+
 function goToPage(page) {
     for(let i of rootNode.children) {
         rootNode.removeChild(i);
