@@ -4,6 +4,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.card_bg_color(@color) {
+    border-color: @color;
+    background-color: @color;
+}
+
 .container {
     margin: 0 auto;
     padding: 0;
@@ -24,7 +29,6 @@
     padding: 0 @padd_size;
 
     .nav-item {
-        padding: 10px;
 
         .nav-link {
             color: #000;
@@ -43,79 +47,42 @@
 main {
     padding: 0 @padd_size;
 }
-.posts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+
+
+.classes {
+    &__img, .card {
+        border-radius: 0;
+    }
 
     &__card {
-        border: 1px solid;
-
-        p {
-            text-align: center;
-            line-height: 40px;
-            color: #fff;
-            margin: 0;
-        }
+        color: #fff;
 
         &--red{
-            border-color: @red;
-            p {
-                background-color: @red;
-            }
+            .card_bg_color(@red);
         }
         &--blue{
-            border-color: @blue;
-            p {
-                background-color: @blue;
-            }
+            .card_bg_color(@blue);
         }
         &--orange{
-            border-color: @orange;
-            p {
-                background-color: @orange;
-            }
+            .card_bg_color(@orange);
         }
         &--green{
-            border-color: @green;
-            p {
-                background-color: @green;
-            }
+            .card_bg_color(@green);
         }
-    }
-    
-    &__img {
-        width: 100%;
     }
 }
 
 footer {
-    margin-top: 30px;
     padding: 0 @padd_size;
     
     p {
-        line-height: 40px;
         color: #fff;
-        padding-left: 20px;
         background-color: @footer_color;
     }
 }
 
 @media screen and (min-width: 767.98px) and (max-width: 991.98px) {
-    .navbar {
+    .navbar, main, footer {
         padding: 0 @tablet_padd_size;
-    }
-    main {
-        padding: 0 @tablet_padd_size;
-    }
-    footer {
-        padding: 0 @tablet_padd_size;
-    }
-}
-
-@media screen and (min-width: 767.98px) {
-    .posts {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
