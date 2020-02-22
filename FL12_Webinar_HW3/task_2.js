@@ -121,7 +121,7 @@ const demoteEmp = (manager) => ({
     demoteEmp(employee, punishment) {
         let managedEmp = manager.managedEmployees.find(emp => emp === employee);
         if (managedEmp) {
-            managedEmployee.getDemoted(punishment);
+            managedEmp.getDemoted(punishment);
         } else {
             console.log('Error');
         }
