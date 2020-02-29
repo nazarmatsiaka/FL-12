@@ -55,7 +55,7 @@ const deleteBtn = (userId, delUser) => {
 const getCat = () => {
     const img = document.createElement('img');
     img.classList.add('cat__img');
-    fetch('https://cataas.com/cat')
+    fetch(`https://cataas.com/cat?v=${Math.random()}`)
     .then(response => response.blob())
     .then(blob => {
         img.src = URL.createObjectURL(blob);
