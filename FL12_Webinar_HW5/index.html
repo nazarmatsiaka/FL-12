@@ -7,10 +7,71 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <p id="home">HOME</p>
+    </header>
+    <div id="wrapper">
+        <form id="editForm">
+            <label for="fullName">Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="userName">User name:</label>
+            <input type="text" id="userName" name="userName" required>
+
+            <fieldset name="address">
+                <legend>Addres</legend>
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" required>
+
+                <label for="suite">Suite:</label>
+                <input type="text" id="suite" name="suite" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+
+                <label for="zipcode">Zip code:</label>
+                <input type="text" id="zipcode" name="zipcode" required>
+
+                <fieldset name="geo">
+                    <legend>Geo:</legend>
+                    <label for="lat">Lat:</label>
+                    <input type="text" id="lat" name="lat" required>
+
+                    <label for="lng">Lng:</label>
+                    <input type="text" id="lng" name="lng" required>
+                </fieldset>
+            </fieldset>
+
+            <fieldset name="contact">
+                <Legend>Contacts</Legend>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" required>
+            </fieldset>
+
+            <fieldset name="company">
+                <legend>Company:</legend>
+                <label for="companyName">Name:</label>
+                <input type="text" id="companyName" name="companyName" required>
+
+                <label for="catchPhrase">Catch phrase:</label>
+                <input type="text" id="catchPhrase" name="catchPhrase" required>
+
+                <label for="bs">BS:</label>
+                <input type="text" id="bs" name="bs" required>
+            </fieldset>
+            <button type="submit" class="btn submit__btn">Submit</button>
+        </form>
+    </div>
+    
     <div class="loader_container">
         <div class="loader">Loading...</div>
     </div>
-    <ul id="userList"></ul>
     <script src="js/app.js"></script>
 </body>
 </html>
