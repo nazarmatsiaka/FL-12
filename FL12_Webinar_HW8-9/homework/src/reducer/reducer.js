@@ -1,5 +1,4 @@
 function reducer(state = {}, action) {
-    console.log(action);
     switch (action.type) {
         case 'DELETE_ITEM':
             return {...state, courses: state.courses.filter(item => item.id !== action.itemId)};

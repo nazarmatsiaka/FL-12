@@ -9,6 +9,7 @@ const Routes = () => (
         <Route exact path="/" component={ Main } />
         <Route exact path="/addCourse" component={ CourseForm } />
         <Route exact path="/edit/:courseId" component={ CourseForm } />
+
         <Redirect to="/" />
     </Switch>
 );

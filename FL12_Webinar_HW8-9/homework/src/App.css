@@ -9,6 +9,15 @@
     margin: 0 auto;
 }
 
+.header_name {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 main {
     background-color: #F0F0F4;
     padding: 50px 0;

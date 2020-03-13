@@ -11,7 +11,7 @@ class CourseForm extends Component{
     constructor() {
         super();
         this.state = {course: {
-                id: 3,
+                id: NaN,
                 title: '',
                 description: '',
                 authors: '',

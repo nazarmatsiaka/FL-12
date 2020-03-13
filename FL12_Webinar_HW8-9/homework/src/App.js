@@ -11,7 +11,7 @@ function App() {
         <div className="wrapper">
             <header>
                 <div className="container">
-                    <Link to="/">Learn</Link>
+                    <Link className="header_name" to="/">Learn</Link>
                 </div>
             </header>
             <main>
