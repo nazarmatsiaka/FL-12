@@ -1,0 +1,23 @@
+<li *ngIf="!editMode" class="list__item">
+  <div class="list__fild">{{user.name}}</div>
+  <div class="list__fild">{{user.email}}</div>
+  <div class="list__fild">{{user.phone}}</div>
+  <button (click)="deleteUser(user.id)" class="btn btn__delete">Delete</button>
+  <button (click)="editModeOn()" class="btn btn__edit">Edit</button>
+</li>
+
+<li *ngIf="editMode">
+  <form [formGroup]="userForm" class="list__item" (ngSubmit)="submit()">
+    <div class="list__fild">
+      <input type="text" formControlName="name" placeholder="Name" />
+    </div>
+    <div class="list__fild">
+      <input type="text" formControlName="email" placeholder="Email" />
+    </div>
+    <div class="list__fild">
+      <input type="text" formControlName="phone" placeholder="Phone" />
+    </div>
+    <button type="submit" [disabled]="!userForm.valid" class="btn btn__save">Save</button>
+    <button (click)="discard()" class="btn btn__discard">Discard</button>
+  </form>
+</li>

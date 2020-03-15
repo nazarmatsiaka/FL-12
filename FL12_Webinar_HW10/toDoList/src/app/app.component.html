@@ -1,0 +1,11 @@
+<main>
+  <div class="headerBlock">
+    <input class="headerBlock__input" type="text" [(ngModel)]="searchValue" placeholder="Search" />
+    <button (click)="changeAddMode(true)" class="headerBlock__btn">Add New User</button>
+  </div>
+
+  <ul class="list">
+    <app-user-item *ngIf="addMode" (changeAddMode)="changeAddMode($event)" ></app-user-item>
+    <app-user-item *ngFor="let userItem of users | filterUsers: searchValue" [user]="userItem"></app-user-item>
+  </ul>
+</main>

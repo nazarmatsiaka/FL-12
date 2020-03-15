@@ -1,0 +1,29 @@
+main {
+  max-width: 1200px;
+  margin: 10px auto;
+}
+
+.headerBlock {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  align-items: stretch;
+  grid-column-gap: 10px;
+
+  &__input {
+    border-radius: 8px;
+    padding: 10px 10px;
+    outline: none;
+  }
+
+  &__btn {
+    border-radius: 8px;
+    border: none;
+    background-color: #08B0DA;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+.list {
+  margin: 10px 0;
+}
