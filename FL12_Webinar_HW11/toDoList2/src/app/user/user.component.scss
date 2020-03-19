@@ -1,0 +1,35 @@
+li {
+  list-style-type: none;
+}
+
+.list {
+  &__item {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 1fr 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+
+    &.ng-invalid {
+      border-color: #FF0000;
+    }
+  }
+
+  &__fild {
+    text-align: center;
+  }
+}
+
+.btn {
+  border: 1px solid #000;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+

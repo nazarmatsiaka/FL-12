@@ -1,0 +1,11 @@
+<app-toolbar></app-toolbar>
+
+<ng-container *ngIf="usersList as users; else loading">
+  <ul>
+    <app-user *ngFor="let user of users | filterUser: searchValue" [user]="user"></app-user>
+  </ul>
+</ng-container>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

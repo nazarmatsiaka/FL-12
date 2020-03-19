@@ -1,0 +1,56 @@
+.block {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  &__arrow {
+    font-size: 30px;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__star {
+    color: #FF0000;
+  }
+  &__header {
+    text-align: center;
+    margin: 10px 0;
+  }
+  &__item {
+    margin-bottom: 10px;
+  }
+  &__input {
+    width: 100%;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 8px;
+    outline: none;
+
+    &.ng-invalid {
+      border: 2px solid red;
+    }
+  }
+}
+
+.btn {
+  outline: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 10px 30px;
+  cursor: pointer;
+
+  &__group {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &:disabled {
+    opacity: .4;
+  }
+}
+
+

@@ -1,0 +1,30 @@
+<div class="block">
+  <span (click)="redirectTo()" class="block__arrow">&larr;</span>
+  <form (ngSubmit)="submit()" [formGroup]="userForm" class="form" action="">
+    <h1 class="form__header">{{title}}</h1>
+    <div class="form__item">
+      <label class="form__lable" for="name">Name<span class="form__star">*</span></label>
+      <input class="form__input" type="text" id="name" formControlName="name">
+    </div>
+    <div class="form__item">
+      <label class="form__lable" for="email">Email<span class="form__star">*</span></label>
+      <input class="form__input" type="text" id="email" formControlName="email">
+    </div>
+    <div class="form__item">
+      <label class="form__lable" for="phone">Phone<span class="form__star">*</span></label>
+      <input class="form__input" type="text" id="phone" formControlName="phone">
+    </div>
+    <div class="form__item">
+      <label class="form__lable" for="address">Address</label>
+      <input class="form__input" type="text" id="address" formControlName="address">
+    </div>
+    <div class="form__item">
+      <label class="form__lable" for="website">Website</label>
+      <input class="form__input" type="text" id="website" formControlName="website">
+    </div>
+    <div class="btn__group">
+      <button type="submit" [disabled]="userForm.invalid" class="btn btn__save">Save</button>
+      <button type="button" (click)="discardForm()" class="btn btn__discard">Discard</button>
+    </div>
+  </form>
+</div>
