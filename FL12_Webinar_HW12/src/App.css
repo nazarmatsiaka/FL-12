@@ -1,0 +1,41 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_link {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+.header_link:hover {
+    background-color: #A7A7A7;
+}
+
+.header_link.active {
+    background-color: #808080;
+}
+
+ul {
+    list-style-type: none;
+}
+li {
+    margin-left: 30px;
+    border: 1px solid #000;
+}
+
+.inp_blick {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
