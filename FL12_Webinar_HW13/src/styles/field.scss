@@ -1,0 +1,29 @@
+.field {
+  position: relative;
+  height: 600px;
+  width: 600px;
+  margin: 100px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.cell {
+  border: 1px solid #000;
+  position: relative;
+}
+.cell:after {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  font-size: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:not(.zero):not(.cross):hover {
+  cursor: pointer;
+  background-color: #FFF0AE;
+  opacity: .4;
+}
